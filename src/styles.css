@@ -1,0 +1,89 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-lime: var(--lime);
+  --color-void: var(--void);
+  --color-warm: var(--warm);
+  --color-paper: var(--paper);
+  --color-editorial: var(--editorial);
+  --color-ash: var(--ash);
+  --color-charcoal: var(--charcoal);
+  --color-signal: var(--signal);
+  --color-border: var(--border);
+  --color-primary: var(--lime);
+  --color-primary-foreground: var(--void);
+  --color-muted: var(--editorial);
+  --color-muted-foreground: var(--ash);
+  --color-accent: var(--lime);
+  --color-accent-foreground: var(--void);
+  --color-card: var(--void);
+  --color-card-foreground: var(--paper);
+  --color-popover: var(--void);
+  --color-popover-foreground: var(--paper);
+  --color-secondary: var(--warm);
+  --color-secondary-foreground: var(--paper);
+  --color-destructive: var(--signal);
+  --color-destructive-foreground: var(--paper);
+  --color-input: var(--border);
+  --color-ring: var(--lime);
+  --font-display: "Inter Tight", "Helvetica Neue", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+}
+
+:root {
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(1 0 0);
+  --lime: oklch(0.93 0.27 130);
+  --void: oklch(0.08 0 0);
+  --warm: oklch(0.13 0 0);
+  --paper: oklch(1 0 0);
+  --editorial: oklch(0.93 0 0);
+  --ash: oklch(0.62 0 0);
+  --charcoal: oklch(0.22 0 0);
+  --signal: oklch(0.58 0.25 27);
+  --border: oklch(1 0 0 / 0.15);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background-color: var(--color-void);
+    color: var(--color-paper);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--color-lime); color: var(--color-void); }
+
+}
+
+@utility hairline-grid-dark {
+  background-image: linear-gradient(to right, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+@utility hairline-grid-light {
+  background-image: linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px);
+  background-size: 25% 100%;
+}
+
+@keyframes glitch-jitter {
+  0%,90%,100% { transform: translate3d(0,0,0); }
+  92% { transform: translate3d(2px,0,0); }
+  94% { transform: translate3d(-2px,0,0); }
+  96% { transform: translate3d(1px,0,0); }
+}
+@utility glitch-anim {
+  animation: glitch-jitter 4s steps(1) infinite;
+}
+@utility glitch-anim-paused {
+  animation-play-state: paused;
+}
