@@ -39,3 +39,19 @@ npm run dev
 
 - The tab favicon is defined in `public/favicon.svg`.
 - The app metadata and routing shell live in `src/routes/__root.tsx`.
+
+## Deployment (Vercel)
+
+- This project uses server-side rendering with TanStack Start. Vercel needs a serverless function to run the SSR entrypoint.
+- I added `api/index.js` which forwards all incoming requests to the TanStack Start server entry.
+- A `vercel.json` rewrite maps all routes to the API function so SSR runs for every path.
+
+To build and preview locally:
+
+```bash
+npm install
+npm run build
+npm run preview
+```
+
+When deploying to Vercel, no extra configuration should be required beyond the files added here.
